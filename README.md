@@ -8,14 +8,10 @@ schemata-s3 is an S3 context that uses [mcohen01/amazonica](https://github.com/m
 to enable clojure.java.io utilities like `spit`, `slurp`, `io/reader`, etc. with 
 S3 paths.
 
----
-
 Lein (Uses [Break Versioning](https://github.com/ptaoussanis/encore/blob/master/BREAK-VERSIONING.md)):
 ```
 [org.clojars.mjdowney/schemata-s3 "1.0.0"]
 ```
-
----
 
 - [Examples](#examples)
   - [Listing objects](#listing-objects)
