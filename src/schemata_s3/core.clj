@@ -88,16 +88,20 @@
   "Like (io/file parent child & more) except is guaranteed to use '/'
   as the separator, regardless of the value of File/separator (maybe
   you're running on a Windows host?)."
-  [parent child & more]
-  (let [parts (cons parent (cons child more))
-        trim-part (fn [part]
-                    ;; Trim the start, if there are any leading '/' chars
-                    (let [part' (cond-> part
-                                        (string/starts-with? part "/") (subs 1))]
-                      (if (string/ends-with? part "/")
-                        (subs part' 0 (dec (count part')))
-                        part')))]
-    (string/join "/" (map trim-part parts))))
+  ([parent]
+    parent)
+  ([parent child]
+   (s3-join parent child "/"))
+  ([parent child & more]
+   (let [parts (cons parent (cons child more))
+         trim-part (fn [part]
+                     ;; Trim the start, if there are any leading '/' chars
+                     (let [part' (cond-> part
+                                         (string/starts-with? part "/") (subs 1))]
+                       (if (string/ends-with? part "/")
+                         (subs part' 0 (dec (count part')))
+                         part')))]
+     (string/join "/" (map trim-part parts)))))
 
 (defn- ->key-name [root naming-convention spec]
   (let [path-parts (cond->> (s/spec->path naming-convention spec)

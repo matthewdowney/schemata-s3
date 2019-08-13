@@ -1,4 +1,4 @@
-(defproject org.clojars.mjdowney/schemata-s3 "1.0.0"
+(defproject org.clojars.mjdowney/schemata-s3 "1.0.1"
   :description "Clojure interface for Amazon S3 via a schemata context."
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
